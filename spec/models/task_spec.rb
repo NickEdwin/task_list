@@ -10,5 +10,7 @@ describe Task, type: :model do
   describe "relationships" do
     it {should have_many(:user_tasks)}
     it {should have_many(:users).through(:user_tasks)}
+    it {should have_many(:taggings)}
+    it {should have_many(:tags).through(:taggings)}
   end
 end
