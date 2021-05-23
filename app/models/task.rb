@@ -2,4 +2,6 @@ class Task < ApplicationRecord
   validates_presence_of :title,
                         :description,
                         :due_date
-end 
+  has_many :user_tasks, dependent: :destroy
+  has_many :users, through: :user_tasks
+end
