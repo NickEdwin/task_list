@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :tasks
+  get "/tasks/:id/status" => "tasks#status"
+
+  resources :tags
 end
