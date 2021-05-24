@@ -1,0 +1,27 @@
+<%= form_with(model: @task) do |f| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <%= f.label :title, { class: "form-label"} %>
+        <%= f.text_field :title, { class: "form-control", placeholder: "Ex: Fix bug", required: true } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :description, { class: "form-label"} %>
+        <%= f.text_field :description, { class: "form-control", placeholder: "Ex: Fix bug found in issue #527", required: true } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :due_date, { class: "form-label"} %>
+        <%= f.datetime_select :due_date, as: :due_date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :tag_list, { class: "form-label"} %>
+        <%= f.text_field :tag_list, { class: "form-control", placeholder: "Ex: Bug, ASAP, SOS" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :users, { class: "form-label"} %><br>
+        <%= f.select :users, User.all.collect { |user| [user.name, user.id] }, {}, multiple: true %>
+        </div>
+      <%= f.submit "Update Task", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

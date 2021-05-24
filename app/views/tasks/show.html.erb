@@ -1,0 +1,25 @@
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @task.title %></h5>
+    <p class="card-text"><%= @task.description %></p>
+    <p class="card-text">Completion Status: <%= @task.status %></p>
+    <p class="card-text">Assigned To: <% @task.users.each do |user|%>
+                                          <%= user.name %>
+                                        <% end %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Tags:
+      <% @task.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag)  %>
+      <% end %>
+    </h6>
+    <%= link_to "Delete Task", "/tasks/#{@task.id}", method: :delete%><br>
+    <%= link_to "Edit Task", "/tasks/#{@task.id}/edit" %><br>
+    <% if @task.status == "Incomplete" %>
+      <%= link_to "Mark Complete", "/tasks/#{@task.id}/status" %>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    Created on: <%= @task.created_at %>
+  </div>
+</div>

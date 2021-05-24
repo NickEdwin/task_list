@@ -1,5 +1,7 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter 'tag'
+end
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
