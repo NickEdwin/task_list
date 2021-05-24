@@ -19,4 +19,14 @@ RSpec.describe "Create a new user", type: :feature do
     expect(user.name).to eq("Nick")
     expect(user.job).to eq("Software Engineer")
   end
+
+  it "can not add a new user with missing information" do
+    visit "/users/new"
+
+    fill_in :Job, with: "Software Engineer"
+
+    click_on "Submit"
+
+    expect(current_path).to eq('/users')
+  end
 end
