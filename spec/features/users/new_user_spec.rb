@@ -21,7 +21,7 @@ RSpec.describe "Create a new user", type: :feature do
   end
 
   it "can not add a new user with missing information" do
-    visit "/users/new"
+    visit "/users/new" 
 
     fill_in :Job, with: "Software Engineer"
 
