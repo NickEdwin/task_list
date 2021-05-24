@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_05_23_201914) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "due_date"
+    t.datetime "due_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
