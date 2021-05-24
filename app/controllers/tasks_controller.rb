@@ -13,6 +13,35 @@ class TasksController < ApplicationController
     redirect_to "/"
   end
 
+  def show
+    @task = Task.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    redirect_to "/"
+  end
+
+  def destroy
+    task = Task.find(params[:id])
+    task.destroy
+    redirect_to "/"
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to "/"
+  end
+
+  def status
+    @task = Task.find(params[:id])
+    @task.status = "Complete"
+    @task.save
+    redirect_to "/tasks/#{@task.id}"
+  end
+
   private
 
   def task_params
