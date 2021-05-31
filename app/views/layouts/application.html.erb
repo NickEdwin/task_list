@@ -36,6 +36,16 @@
           </ul>
         </li>
       </ul>
+      <%= form_with url: "/?sort", local: true, method: :get, html: { class: "form-inline" } do |form| %>
+        <div class="row form-group">
+           <div class="col-sm-8">
+             <%= form.text_field :search, placeholder: "Search", size: 40, data: { behavior: "autocomplete" }, class: "form-control" %>
+           </div>
+           <div class="col-sm-4">
+             <%= form.button "Search", class: "btn btn-outline-success form-control" %>
+           </div>
+         </div>
+      <% end %>
     </div>
   </div>
 </nav>
